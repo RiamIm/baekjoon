@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Run C with input",
+        "type": "shell",
+        "command": "gcc",
+        "args": [
+          "-g",
+          "${file}",
+          "-o",
+          "${fileDirname}\\main.exe"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": false   // ❌ 기본 실행 아님!
+        },
+        "problemMatcher": [],
+        "options": {
+          "cwd": "${fileDirname}"
+        }
+      },
+      {
+        "label": "Build and Run C with input",
+        "dependsOn": "Run C with input",
+        "type": "shell",
+        "command": ".\\main.exe < input.txt",
+        "options": {
+          "cwd": "${fileDirname}"
+        },
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true   // ✅ 기본 실행 작업!
+        }
+      }
+    ]
+  }
+  
